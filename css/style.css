@@ -1,0 +1,401 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:800");
+* {
+  user-select: none; }
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  transform-style: preserve-3d;
+  perspective: none;
+  background: url("../images/background.jpg") no-repeat fixed center;
+  background-size: 100% 100%;
+  overflow: hidden; }
+
+header {
+  z-index: 5; }
+
+.scene, .face, .restart, .ghost-container, .ghost-body, .eyes-container, .grass, .grave, .body-parts {
+  --rx: 0deg;
+  --ry: 0deg;
+  --rz: 0deg;
+  --tx: 0px;
+  --ty: 0px;
+  --tz: 0px;
+  transform: rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz)) translate3d(var(--tx), var(--ty), var(--tz)); }
+
+.scene {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  perspective: none;
+  transform-style: preserve-3d;
+  transition: 1s ease;
+  --rx:-30deg;
+  --ry:45deg;
+  --rz:0deg;
+  --tx:50%;
+  --ty:50%; }
+
+.face {
+  position: absolute; }
+
+#moon {
+  width: 40%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 0%; }
+
+.grass {
+  position: absolute; }
+
+.grass-top {
+  background: aliceblue url("../images/grass.jpg") no-repeat fixed center;
+  width: 1000px;
+  height: 1000px;
+  --rx: 90deg;
+  --tx: -50%;
+  --tz: 380px; }
+
+.grass-front {
+  background-image: url("../images/grass-side.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 300px;
+  --rx: 0deg;
+  --ry: 0deg;
+  --rz: 0deg;
+  --tx: -50%;
+  --ty: 40%;
+  --tz: 500px; }
+
+.grass-left {
+  background-image: url("../images/grass-side.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 300px;
+  --rx: 0deg;
+  --ry: 90deg;
+  --rz: 0deg;
+  --tx: 0%;
+  --ty: 40%;
+  --tz: -1000px; }
+
+#pause {
+  position: absolute;
+  background: black;
+  width: 50px;
+  height: 50px; }
+
+.cls-1 {
+  fill: #fff; }
+
+#mute-sfx-icon, #mute-bgm-icon {
+  width: 25px; }
+
+.mute {
+  display: inline-block;
+  margin: 0.5em 0em 1em 1em; }
+  .mute .cross {
+    visibility: hidden; }
+  .mute:hover {
+    opacity: 0.5; }
+
+#use-headphones {
+  margin: 0.5em 0em 0em 1em;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.8em; }
+
+.title {
+  transform: rotateX(90deg) rotateZ(90deg) translateY(50px) translateX(-25px);
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 4em; }
+
+.restart {
+  position: absolute;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2em;
+  color: black;
+  --rx: 0deg;
+  --ry: 0deg;
+  --rz: 0deg;
+  --tx: 350px;
+  --ty: 240%;
+  --tz: -500px; }
+
+.restart:hover {
+  opacity: 0.5; }
+
+.restart-active {
+  animation: restart 1s ease infinite; }
+
+.grave {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  transform-style: preserve-3d; }
+  .grave:hover .face {
+    opacity: 0.5; }
+
+.grave-1 {
+  --tx: -300px;
+  --ty: 0px;
+  --tz: -300px; }
+
+.grave-2 {
+  --tx: 0px;
+  --ty: 0px;
+  --tz: -300px; }
+
+.grave-3 {
+  --tx: 300px;
+  --ty: 0px;
+  --tz: -300px; }
+
+.grave-4 {
+  --tx: -300px;
+  --ty: 0px;
+  --tz: 0px; }
+
+.grave-5 {
+  --tx: -30px;
+  --ty: 50px;
+  --tz: 0px;
+  --rx:90deg;
+  --rz:90deg; }
+
+.grave-6 {
+  --tx: 300px;
+  --ty: 0px;
+  --tz: 0px; }
+
+.grave-7 {
+  --tx: -300px;
+  --ty: 0px;
+  --tz: +300px; }
+
+.grave-8 {
+  --tx: 0px;
+  --ty: 0px;
+  --tz: +300px; }
+
+.grave-9 {
+  --tx: 300px;
+  --ty: 0px;
+  --tz: 300px; }
+
+.square-front {
+  --rx: 0deg;
+  --ry: 0deg;
+  --rz: 0deg;
+  --tx: 0px;
+  --ty: 0px;
+  --tz: 45px;
+  width: 90px;
+  height: 120px; }
+
+.square-top {
+  --rx: 90deg;
+  --ry: 0deg;
+  --rz: 0deg;
+  --tx: 0px;
+  --ty: 30px;
+  --tz: 15px;
+  width: 90px;
+  height: 30px; }
+
+.square-left {
+  --rx: 0deg;
+  --ry: -90deg;
+  --rz: 0deg;
+  --tx: 30px;
+  --ty: 0px;
+  --tz: 15px;
+  width: 30px;
+  height: 120px; }
+
+.oval-front {
+  --rx: 0deg;
+  --ry: 0deg;
+  --rz: 0deg;
+  --tx: 0px;
+  --ty: 0px;
+  --tz: 45px;
+  width: 90px;
+  height: 120px;
+  z-index: 2; }
+
+.oval-back {
+  --rx: 0deg;
+  --ry: 0deg;
+  --rz: 0deg;
+  --tx: 0px;
+  --ty: 0px;
+  --tz: 15px;
+  width: 90px;
+  height: 120px; }
+
+.oval-left {
+  --rx: 0deg;
+  --ry: -90deg;
+  --rz: 0deg;
+  --tx: 30px;
+  --ty: 15px;
+  --tz: 15px;
+  width: 30px;
+  height: 105px; }
+
+.oval-right {
+  --rx: 0deg;
+  --ry: -90deg;
+  --rz: 0deg;
+  --tx: 30px;
+  --ty: 15px;
+  --tz: -73.5px;
+  width: 30px;
+  height: 105px; }
+
+.peon-front {
+  --rx: 0deg;
+  --ry: 0deg;
+  --rz: 0deg;
+  --tx: 0px;
+  --ty: -30px;
+  --tz: 45px;
+  width: 90px;
+  height: 150px; }
+
+.peon-top-left {
+  --rx: 90deg;
+  --ry: -32deg;
+  --rz: 0deg;
+  --tx: 13px;
+  --ty: 30px;
+  --tz: 27px;
+  width: 54px;
+  height: 30px; }
+
+.peon-top-right {
+  --rx: 90deg;
+  --ry: 32deg;
+  --rz: 0deg;
+  --tx: 19px;
+  --ty: 30px;
+  --tz: 48px;
+  width: 54px;
+  height: 30px; }
+
+.peon-left {
+  --rx: 0deg;
+  --ry: -90deg;
+  --rz: 0deg;
+  --tx: 30px;
+  --ty: 0px;
+  --tz: 15px;
+  width: 30px;
+  height: 120px; }
+
+.ghost-container {
+  perspective: 1000px;
+  position: absolute;
+  width: 60px;
+  transition: 0.5s ease;
+  transform-style: preserve-3d;
+  --tz:120px;
+  --ty:0px; }
+  .ghost-container:hover .eyes-container {
+    animation: blinking 0.2s ease; }
+
+.ghost-body {
+  --rx: 0deg;
+  --ry: -45deg;
+  --rz: 0deg;
+  --tx: 0px;
+  --ty: 120px;
+  --tz: 0px;
+  width: 100%;
+  transition: 0.5s ease; }
+
+.eyes-container {
+  position: absolute;
+  height: 0.6em;
+  z-index: 1;
+  overflow: hidden;
+  --tx:40%;
+  --ty:150px;
+  --tz:1em; }
+
+.ghost-eyes {
+  height: 0.6em; }
+
+.body-parts {
+  position: absolute; }
+
+.ghost-pig-snout {
+  width: 2em;
+  --tx: -160%;
+  --ty: 145px;
+  --tz: 2em; }
+
+.ghost-face-green {
+  height: 1em;
+  --tx: -260%;
+  --ty: 145px;
+  --tz: 2em; }
+
+.ghost-pig-ear-left {
+  height: 1em;
+  --tx: -350%;
+  --ty: 140px; }
+
+.ghost-pig-ear-right {
+  height: 1em;
+  --tx: -140%;
+  --ty: 124px;
+  --tz: 1.5em; }
+
+.ghost-tail {
+  height: 4em;
+  --ry:-90deg;
+  --tx: -100%;
+  --ty: 165px;
+  --tz: 2em; }
+
+.ghost-teeth {
+  width: 1em;
+  --tx: -220%;
+  --ty: 164px;
+  --tz: 1em; }
+
+.ghost-horn-left {
+  height: 1.5em;
+  --ry:90deg;
+  --tx: -100%;
+  --ty: 120px;
+  --tz: -3.5em; }
+
+.ghost-horn-right {
+  height: 1.5em;
+  --ry:90deg;
+  --tx: -120%;
+  --ty: 117px;
+  --tz: -2em; }
+
+@keyframes blinking {
+  0% {
+    height: 0.6em; }
+  50% {
+    height: 0em; }
+  100% {
+    height: 0.6em; } }
+@keyframes restart {
+  50% {
+    transform: translateX(350px) translateZ(-500px) translateY(70px); } }
+
+/*# sourceMappingURL=style.css.map */
